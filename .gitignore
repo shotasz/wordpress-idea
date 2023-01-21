@@ -1,13 +1,14 @@
 # ignore everything in the root except the "wp-content" directory.
+.DS_Store
 db/
 
-wp-admin
-wp-includes
-wp-*.php
+**/wp-admin
+**/wp-includes
+**/wp-*.php
 **/wp-content/languages
 **/wp-content/uploads
 **/wp-content/upgrade
 **/wp-content/plugins
-**/wp-content/themes
-!**/wp-content/themes/**
-!**/wp-content/themes/*/index.php
+**/wp-content/themes/twentytwentyone
+**/wp-content/themes/twentytwentytwo
+**/wp-content/themes/twentytwentythree
