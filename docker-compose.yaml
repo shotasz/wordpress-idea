@@ -1,0 +1,44 @@
+version: "3.0"
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    platform: linux/x86_64
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    platform: linux/x86_64
+    volumes:
+      - ./html:/var/www/html
+      - ./html/wp-content/themes:/var/www/html/wp-content/themes
+      - ./html/wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./html/wp-content/uploads:/var/www/html/wp-content/uploads
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8000:80
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    platform: linux/x86_64
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8888:80
