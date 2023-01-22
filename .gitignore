@@ -1,5 +1,6 @@
 # ignore everything in the root except the "wp-content" directory.
 .DS_Store
+.vscode
 db/
 
 **/wp-admin
