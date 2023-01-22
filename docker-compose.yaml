@@ -2,7 +2,6 @@ version: "3.0"
 services:
   db:
     image: mysql:5.7
-    container_name: mysql
     platform: linux/x86_64
     volumes:
       - ./db/mysql:/var/lib/mysql
@@ -15,7 +14,6 @@ services:
 
   wordpress:
     image: wordpress:latest
-    container_name: wordpress
     platform: linux/x86_64
     volumes:
       - ./html:/var/www/html
@@ -35,7 +33,6 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
     platform: linux/x86_64
     restart: always
     depends_on:
